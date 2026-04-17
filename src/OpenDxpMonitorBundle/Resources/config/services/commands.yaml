@@ -1,0 +1,21 @@
+services:
+
+    # Health Check Command
+    Instride\Bundle\OpenDxpMonitorBundle\Command\HealthCheckCommand:
+        arguments:
+            - '@Instride\Bundle\OpenDxpMonitorBundle\Manager\RunnerManager'
+        tags:
+            - { name: console.command }
+
+    # Health Report Command
+    Instride\Bundle\OpenDxpMonitorBundle\Command\HealthReportCommand:
+        arguments:
+            - '%opendxp_monitor.report.default_endpoint%'
+            - '%opendxp_monitor.report.api_key%'
+            - '%opendxp_monitor.report.instance_environment%'
+            - '%opendxp.config%'
+            - '%secret%'
+            - '@http_client'
+            - '@Instride\Bundle\OpenDxpMonitorBundle\Manager\RunnerManager'
+        tags:
+            - { name: console.command }

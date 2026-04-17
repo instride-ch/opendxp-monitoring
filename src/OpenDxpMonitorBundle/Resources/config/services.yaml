@@ -1,0 +1,20 @@
+imports:
+    - { resource: services/*.yaml }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    Instride\Bundle\OpenDxpMonitorBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    # Runner
+    opendxp_monitor.runner:
+        class: Laminas\Diagnostics\Runner\Runner
+        public: true
