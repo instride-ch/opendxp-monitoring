@@ -80,8 +80,8 @@ class HealthReportCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $instanceId = 'opendxp-instance';
-        $hostDomain = 'opendxp-monitoring-test';
+        $instanceId = $this->getInstanceId();
+        $hostDomain = $this->systemConfig['general']['domain'] ?? null;
 
         if (null === $instanceId) {
             $output->writeln('<comment>Please define the secret parameter.</comment>');
@@ -94,7 +94,7 @@ class HealthReportCommand extends Command
         }
 
         $checkReporter = new ArrayReporter(
-            true,
+            false,
             $input->getOption('exclude'),
             $input->getOption('include')
         );
@@ -103,45 +103,25 @@ class HealthReportCommand extends Command
         $runner->addReporter($checkReporter);
         $runner->run();
 
-        $results = $checkReporter->getResults();
-
-        // Transform to match curl format
-        $checks = array_map(function($check) {
-            return [
-                'name' => $check['check_id'],
-                'status' => $check['status_code'] === 0 ? 'OK' : 'KO',
-                'message' => $check['message'],
-            ];
-        }, $results);
-
-        echo json_encode($checks);
-
-        $payload = [
-            'instance_id' => $instanceId,
-            'checks' => $checks,
-            'metadata' => [
-                'host_domain' => $hostDomain,
-                'instance_environment' => $this->instanceEnvironment,
-            ]
-        ];
-
-        echo "\nSending payload: " . json_encode($payload, JSON_PRETTY_PRINT) . "\n";
-
         try {
             $response = $this->httpClient->request('PUT', $input->getOption('endpoint'), [
-                'json' => $payload,
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $this->apiKey,
-                    'Content-Type' => 'application/json',
+                'auth_bearer' => $this->apiKey,
+                'json' => [
+                    'instance_id' => $instanceId,
+                    'checks' => $checkReporter->getResults(),
+                    'metadata' => [
+                        'host_domain' => $hostDomain,
+                        'instance_environment' => $this->instanceEnvironment,
+                    ]
                 ],
             ]);
             $payload = $response->toArray();
         } catch (
-            TransportExceptionInterface |
-            ClientExceptionInterface |
-            DecodingExceptionInterface |
-            RedirectionExceptionInterface |
-            ServerExceptionInterface $exception
+        TransportExceptionInterface |
+        ClientExceptionInterface |
+        DecodingExceptionInterface |
+        RedirectionExceptionInterface |
+        ServerExceptionInterface $exception
         ) {
             $output->writeln(
                 sprintf(
