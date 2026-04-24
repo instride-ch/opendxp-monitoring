@@ -37,5 +37,5 @@ opendxp_monitor:
         instance_environment: 'prod'
 ```
 
-> **Note:** The health report is triggered with the command `pimcore:monitor:health-report`.
+> **Note:** The health report is triggered with the command `opendxp:monitor:health-report`.
 > Learn more about the available commands [here](02-commands.md).

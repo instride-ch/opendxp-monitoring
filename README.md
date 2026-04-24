@@ -1,9 +1,9 @@
-![Pimcore Monitor](docs/images/github_banner.png "Pimcore Monitor")
+![OpenDxp Monitor](docs/images/github_banner.png "OpenDxp Monitor")
 
 [![Software License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Stable Version](https://img.shields.io/packagist/v/instride/pimcore-monitor.svg?style=flat-square)](https://packagist.org/packages/instride/pimcore-monitor)
+[![Latest Stable Version](https://img.shields.io/packagist/v/instride/opendxp-monitor.svg?style=flat-square)](https://packagist.org/packages/instride/opendxp-monitor)
 
-This bundle provides a way to run a series of Pimcore and application related health checks. Each health check should
+This bundle provides a way to run a series of OpenDxp and application related health checks. Each health check should
 implement some application logic that you want to make sure always works. Another usage can be testing for specific
 requirements, like availability of PHP extensions.
 
@@ -17,12 +17,12 @@ requirements, like availability of PHP extensions.
 - **HttpsConnection:** Checks whether the HTTPS encryption is enabled.
 - **MySqlVersion:** Checks what MySQL version is configured.
 - **PhpVersion:** Checks what PHP version is configured.
-- **PimcoreAreabricks:** Checks which Areabricks are installed within Pimcore.
-- **PimcoreBundles:** Checks which Bundles are installed within Pimcore.
-- **PimcoreElementCount:** Checks whether the count of Pimcore Elements exceeds a certain threshold.
-- **PimcoreMaintenance:** Checks whether Pimcore maintenance is enabled.
-- **PimcoreUsers:** Checks what Pimcore Users are configured.
-- **PimcoreVersion:** Checks what Pimcore Version is installed.
+- **OpenDxpAreabricks:** Checks which Areabricks are installed within OpenDxp.
+- **OpenDxpBundles:** Checks which Bundles are installed within OpenDxp.
+- **OpenDxpElementCount:** Checks whether the count of OpenDxp Elements exceeds a certain threshold.
+- **OpenDxpMaintenance:** Checks whether OpenDxp maintenance is enabled.
+- **OpenDxpUsers:** Checks what OpenDxp Users are configured.
+- **OpenDxpVersion:** Checks what OpenDxp Version is installed.
 
 ## Further Information
 * [Installation & Bundle Configuration](docs/00-installation-configuration.md)
@@ -33,6 +33,6 @@ requirements, like availability of PHP extensions.
 ## License
 **instride AG**, Sandgruebestrasse 4, 6210 Sursee, Switzerland  
 connect@instride.ch, [instride.ch](https://instride.ch)  
-Copyright © 2024 instride AG. All rights reserved.
+Copyright © 2026 instride AG. All rights reserved.
 
 For licensing details please visit [LICENSE.md](LICENSE.md) 
