@@ -69,14 +69,15 @@ class DatabaseTableSize extends AbstractCheck
                 continue;
             }
 
-            ++$data['ok'];
+            $data['ok'][$size['table']] = FileSystemHelper::formatBytes($size['size']);
         }
 
         if (\count($data['critical']) > 0) {
             return new Failure(
                 \sprintf(
                     'Following database table sizes are too high: %s',
-                    \implode(',', \array_keys($data['critical']))),
+                    \implode(',', \array_keys($data['critical']))
+                ),
                 $data
             );
         }
@@ -85,7 +86,8 @@ class DatabaseTableSize extends AbstractCheck
             return new Warning(
                 \sprintf(
                     'Following database table sizes are high: %s',
-                    \implode(',', \array_keys($data['warning']))),
+                    \implode(',', \array_keys($data['warning']))
+                ),
                 $data
             );
         }
