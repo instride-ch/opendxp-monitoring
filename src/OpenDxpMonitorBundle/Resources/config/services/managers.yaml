@@ -1,6 +1,0 @@
-services:
-
-    # Runner Manager
-    Instride\Bundle\OpenDxpMonitorBundle\Manager\RunnerManager:
-        arguments:
-            - '@service_container'

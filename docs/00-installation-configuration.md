@@ -3,7 +3,7 @@
 ### Install with Composer
 
 ```
-composer require instride/opendxp-monitor:^1.0
+composer require instride/opendxp-monitoring:^1.0
 ```
 
 ### Loading the Bundle
@@ -15,7 +15,7 @@ Register the bundle in your `config/bundles.php` file to enable it.
 
 return [
     // ...
-    Instride\Bundle\OpenDxpMonitorBundle\OpenDxpMonitorBundle::class => ['all' => true],
+    Instride\Bundle\OpenDxpMonitoringBundle\OpenDxpMonitoringBundle::class => ['all' => true],
 ];
 ```
 
@@ -24,18 +24,18 @@ return [
 This bundle allows you to send a health report to a custom REST endpoint.
 
 ```yaml
-opendxp_monitor:
+opendxp_monitoring:
     report:
 
         # API key for health report endpoint.
         api_key: '<YOUR_RANDOM_BEARER_TOKEN>'
 
         # Default health report API endpoint to send data to.
-        default_endpoint: 'https://health.example.com/report'
+        default_endpoint: 'https://api.example.com/health-report'
 
-        # Environment description for the instance (e.g. 'prod', 'test', 'dev').
-        instance_environment: 'prod'
+        # Environment description for the instance (e.g. 'PRD', 'STG', 'DEV').
+        instance_environment: 'PRD'
 ```
 
-> **Note:** The health report is triggered with the command `opendxp:monitor:health-report`.
+> **Note:** The health report is triggered with the command `opendxp:monitoring:health-report`.
 > Learn more about the available commands [here](02-commands.md).

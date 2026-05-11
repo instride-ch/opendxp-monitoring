@@ -1,0 +1,13 @@
+opendxp_monitoring_system_health_report:
+    path: /admin/opendxp-monitoring/system-health/report
+    defaults: { _controller: Instride\Bundle\OpenDxpMonitoringBundle\Controller\Admin\HealthCheckController::health }
+    methods:
+        - GET
+
+opendxp_monitoring_system_health_status:
+    path: /admin/opendxp-monitoring/system-health/status
+    defaults: { _controller: Instride\Bundle\OpenDxpMonitoringBundle\Controller\Admin\HealthCheckController::status }
+    options:
+        expose: true
+    methods:
+        - GET

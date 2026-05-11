@@ -1,7 +1,7 @@
 # Defaults
 
 ```yaml
-pimcore_monitor:
+opendxp_monitoring:
     checks:
         app_environment:
             enabled: true
@@ -39,31 +39,31 @@ pimcore_monitor:
         mysql_version:
             enabled: true
             skip: false
-            version: '10.5'
+            version: '10.11'
             operator: '>='
         php_version:
             enabled: true
             skip: false
-            version: '8.1'
+            version: '8.4'
             operator: '>='
-        pimcore_areabricks:
+        opendxp_areabricks:
             enabled: true
             skip: false
-        pimcore_bundles:
+        opendxp_bundles:
             enabled: true
             skip: false
-        pimcore_element_count:
+        opendxp_element_count:
             enabled: true
             skip: false
             warning_threshold: 100000
             critical_threshold: 150000
-        pimcore_maintenance:
+        opendxp_maintenance:
             enabled: true
             skip: false
-        pimcore_users:
+        opendxp_users:
             enabled: true
             skip: false
-        pimcore_version:
+        opendxp_version:
             enabled: true
             skip: false
 ```

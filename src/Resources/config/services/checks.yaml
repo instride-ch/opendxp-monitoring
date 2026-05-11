@@ -1,0 +1,132 @@
+services:
+
+    # App Environment Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\AppEnvironment:
+        arguments:
+            - '%opendxp_monitoring.checks.app_environment.skip%'
+            - '%opendxp_monitoring.checks.app_environment.environment%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: app_environment }
+
+    # Disk Usage Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\DiskUsage:
+        arguments:
+            - '%opendxp_monitoring.checks.disk_usage.skip%'
+            - '%opendxp_monitoring.checks.disk_usage.warning_threshold%'
+            - '%opendxp_monitoring.checks.disk_usage.critical_threshold%'
+            - '%opendxp_monitoring.checks.disk_usage.path%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: disk_usage }
+
+    # Doctrine Migrations Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\DoctrineMigrations:
+        arguments:
+            - '%opendxp_monitoring.checks.doctrine_migrations.skip%'
+            - '@Doctrine\Migrations\DependencyFactory'
+        tags:
+            - { name: opendxp_monitoring.check, alias: doctrine_migrations }
+
+    # Hosting Size Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\HostingSize:
+        arguments:
+            - '%opendxp_monitoring.checks.hosting_size.skip%'
+            - '%opendxp_monitoring.checks.hosting_size.warning_threshold%'
+            - '%opendxp_monitoring.checks.hosting_size.critical_threshold%'
+            - '%opendxp_monitoring.checks.hosting_size.path%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: hosting_size }
+
+    # Database Size Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\DatabaseSize:
+        arguments:
+            - '%opendxp_monitoring.checks.database_size.skip%'
+            - '%opendxp_monitoring.checks.database_size.warning_threshold%'
+            - '%opendxp_monitoring.checks.database_size.critical_threshold%'
+            - '@doctrine.dbal.default_connection'
+        tags:
+            - { name: opendxp_monitoring.check, alias: database_size }
+
+    # Database Table Size Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\DatabaseTableSize:
+        arguments:
+            - '%opendxp_monitoring.checks.database_table_size.skip%'
+            - '%opendxp_monitoring.checks.database_table_size.warning_threshold%'
+            - '%opendxp_monitoring.checks.database_table_size.critical_threshold%'
+            - '@doctrine.dbal.default_connection'
+        tags:
+            - { name: opendxp_monitoring.check, alias: database_table_size }
+
+    # HTTPS Connection Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\HttpsConnection:
+        arguments:
+            - '%opendxp_monitoring.checks.https_connection.skip%'
+            - '%opendxp.config%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: https_connection }
+
+    # MySQL Version Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\MySqlVersion:
+        arguments:
+            - '%opendxp_monitoring.checks.mysql_version.skip%'
+            - '%opendxp_monitoring.checks.mysql_version.version%'
+            - '%opendxp_monitoring.checks.mysql_version.operator%'
+            - '@doctrine.dbal.default_connection'
+        tags:
+            - { name: opendxp_monitoring.check, alias: mysql_version }
+
+    # PHP Version Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\PhpVersion:
+        arguments:
+            - '%opendxp_monitoring.checks.php_version.skip%'
+            - '%opendxp_monitoring.checks.php_version.version%'
+            - '%opendxp_monitoring.checks.php_version.operator%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: php_version }
+
+    # OpenDXP Areabricks Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\OpenDxpAreabricks:
+        arguments:
+            - '%opendxp_monitoring.checks.opendxp_areabricks.skip%'
+            - '@OpenDxp\Extension\Document\Areabrick\AreabrickManagerInterface'
+        tags:
+            - { name: opendxp_monitoring.check, alias: opendxp_areabricks }
+
+    # OpenDXP Bundles Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\OpenDxpBundles:
+        arguments:
+            - '%opendxp_monitoring.checks.opendxp_bundles.skip%'
+            - '@OpenDxp\Extension\Bundle\OpenDxpBundleManager'
+        tags:
+            - { name: opendxp_monitoring.check, alias: opendxp_bundles }
+
+    # OpenDXP Element Count Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\OpenDxpElementCount:
+        arguments:
+            - '%opendxp_monitoring.checks.opendxp_element_count.skip%'
+            - '%opendxp_monitoring.checks.opendxp_element_count.warning_threshold%'
+            - '%opendxp_monitoring.checks.opendxp_element_count.critical_threshold%'
+            - '@doctrine.dbal.default_connection'
+        tags:
+            - { name: opendxp_monitoring.check, alias: opendxp_element_count }
+
+    # OpenDXP Maintenance Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\OpenDxpMaintenance:
+        arguments:
+            - '%opendxp_monitoring.checks.opendxp_maintenance.skip%'
+            - '@OpenDxp\Maintenance\Executor'
+        tags:
+            - { name: opendxp_monitoring.check, alias: opendxp_maintenance }
+
+    # OpenDXP Users Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\OpenDxpUsers:
+        arguments:
+            - '%opendxp_monitoring.checks.opendxp_users.skip%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: opendxp_users }
+
+    # OpenDXP Version Check
+    Instride\Bundle\OpenDxpMonitoringBundle\Check\OpenDxpVersion:
+        arguments:
+            - '%opendxp_monitoring.checks.opendxp_version.skip%'
+        tags:
+            - { name: opendxp_monitoring.check, alias: opendxp_version }

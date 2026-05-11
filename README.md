@@ -1,11 +1,11 @@
-![OpenDxp Monitor](docs/images/github_banner.png "OpenDxp Monitor")
+![OpenDXP Monitoring](docs/images/github_banner.png "OpenDXP Monitoring")
 
 [![Software License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Stable Version](https://img.shields.io/packagist/v/instride/opendxp-monitor.svg?style=flat-square)](https://packagist.org/packages/instride/opendxp-monitor)
+[![Latest Stable Version](https://img.shields.io/packagist/v/instride/opendxp-monitoring.svg?style=flat-square)](https://packagist.org/packages/instride/opendxp-monitoring)
 
-This bundle provides a way to run a series of OpenDxp and application related health checks. Each health check should
+This bundle provides a way to run a series of OpenDXP and application-related health checks. Each health check should
 implement some application logic that you want to make sure always works. Another usage can be testing for specific
-requirements, like availability of PHP extensions.
+requirements, like the availability of PHP extensions.
 
 ## Available Checks
 - **AppEnvironment:** Checks whether the application is running in production mode.
@@ -17,12 +17,12 @@ requirements, like availability of PHP extensions.
 - **HttpsConnection:** Checks whether the HTTPS encryption is enabled.
 - **MySqlVersion:** Checks what MySQL version is configured.
 - **PhpVersion:** Checks what PHP version is configured.
-- **OpenDxpAreabricks:** Checks which Areabricks are installed within OpenDxp.
-- **OpenDxpBundles:** Checks which Bundles are installed within OpenDxp.
-- **OpenDxpElementCount:** Checks whether the count of OpenDxp Elements exceeds a certain threshold.
-- **OpenDxpMaintenance:** Checks whether OpenDxp maintenance is enabled.
-- **OpenDxpUsers:** Checks what OpenDxp Users are configured.
-- **OpenDxpVersion:** Checks what OpenDxp Version is installed.
+- **OpenDxpAreabricks:** Checks which Areabricks are installed within OpenDXP.
+- **OpenDxpBundles:** Checks which Bundles are installed within OpenDXP.
+- **OpenDxpElementCount:** Checks whether the count of OpenDXP Elements exceeds a certain threshold.
+- **OpenDxpMaintenance:** Checks whether OpenDXP maintenance is enabled.
+- **OpenDxpUsers:** Checks what OpenDXP Users are configured.
+- **OpenDxpVersion:** Checks what OpenDXP Version is installed.
 
 ## Further Information
 * [Installation & Bundle Configuration](docs/00-installation-configuration.md)

@@ -1,6 +1,6 @@
 # Commands
 
-### Health Check – `opendxp:monitor:health-check`
+### Health Check – `opendxp:monitoring:health-check`
 
 This command runs a complete health check of the system. It executes every registered health check
 and prints its results in the console.
@@ -19,11 +19,11 @@ Application is not running in production mode
 Warning: HTTPS Connection
 HTTPS encryption could not be checked
 
-Failure: OpenDxp Maintenance
-OpenDxp maintenance is not activated
+Failure: OpenDXP Maintenance
+OpenDXP maintenance is not activated
 ```
 
-### Health Report – `opendxp:monitor:health-report`
+### Health Report – `opendxp:monitoring:health-report`
 
 This command collects the current health status and sends it to the defined API endpoint.
 Behind the scenes it is sending the data using a PUT request with a Bearer token header
