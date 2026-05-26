@@ -58,14 +58,6 @@ class OpenDxpMonitoringBundle extends AbstractOpenDxpBundle implements OpenDxpBu
     /**
      * @inheritDoc
      */
-    public function getDescription(): string
-    {
-        return 'Monitors your OpenDXP environment.';
-    }
-
-    /**
-     * @inheritDoc
-     */
     protected function getComposerPackageName(): string
     {
         return 'instride/opendxp-monitoring';
