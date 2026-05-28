@@ -89,10 +89,21 @@ class DatabaseSize extends AbstractCheck
      */
     private function getDatabaseSize(): int
     {
+        try {
+            $database = $this->connection->getDatabase();
+        } catch (Exception) {
+            return 0;
+        }
+
+        if (empty($database)) {
+            return 0;
+        }
+
         $query = <<<SQL
 SELECT SUM(data_length + index_length) AS size
 FROM information_schema.TABLES
-GROUP BY table_schema
+WHERE TABLE_SCHEMA = '{$database}'
+GROUP BY TABLE_SCHEMA
 SQL;
 
         try {

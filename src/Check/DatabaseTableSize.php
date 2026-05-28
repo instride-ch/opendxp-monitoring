@@ -53,7 +53,7 @@ class DatabaseTableSize extends AbstractCheck
         }
 
         $data = [
-            'ok' => 0,
+            'ok' => [],
             'warning' => [],
             'critical' => [],
         ];
@@ -69,7 +69,7 @@ class DatabaseTableSize extends AbstractCheck
                 continue;
             }
 
-            $data['ok'][$size['table']] = FileSystemHelper::formatBytes($size['size']);
+            $data['ok'][$size['table']] = FileSystemHelper::formatBytes($size['size'] ?? 0);
         }
 
         if (\count($data['critical']) > 0) {
@@ -108,10 +108,21 @@ class DatabaseTableSize extends AbstractCheck
      */
     private function getDatabaseTableSizes(): ?array
     {
+        try {
+            $database = $this->connection->getDatabase();
+        } catch (Exception) {
+            return null;
+        }
+
+        if (empty($database)) {
+            return null;
+        }
+
         $query = <<<SQL
 SELECT TABLE_NAME AS `table`,
     (DATA_LENGTH + INDEX_LENGTH) AS `size`
 FROM information_schema.TABLES
+WHERE TABLE_SCHEMA = '{$database}'
 ORDER BY (DATA_LENGTH + INDEX_LENGTH) DESC;
 SQL;
 
