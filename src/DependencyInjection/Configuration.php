@@ -230,7 +230,7 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->scalarNode('version')
                             ->info('The expected version.')
-                            ->defaultValue('10.11')
+                            ->defaultValue('8.4')
                             ->cannotBeEmpty()
                         ->end()
                         ->scalarNode('operator')
